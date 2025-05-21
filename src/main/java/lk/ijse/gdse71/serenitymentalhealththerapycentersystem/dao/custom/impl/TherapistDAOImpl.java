@@ -69,23 +69,7 @@ public class TherapistDAOImpl implements TherapistDAO {
     }
 
     @Override
-    public boolean update(Therapist therapist) {
-        Session session = factoryConfiguration.getSession();
-        Transaction transaction = session.beginTransaction();
 
-        try{
-            session.merge(therapist);
-            transaction.commit();
-            return true;
-        }catch (Exception e){
-            transaction.rollback();
-            return false;
-        }finally {
-            if(session != null){
-                session.close();
-            }
-        }
-    }
 
     @Override
     public boolean delete(String therapistId) {
